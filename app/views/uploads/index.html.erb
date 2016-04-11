@@ -1,0 +1,28 @@
+<div class="page-header">
+    <h1>Your ShareBox</h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @uploads.each do |upload| %>
+	<tr>
+	  <td><%= link_to File.basename(upload.name), upload.url %></td>
+	  <td>
+		<%= link_to "Download", upload.url, :class => 'btn btn-mini btn-default' %>
+        <%= link_to "Delete", upload_path(upload),
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } , :class => 'btn btn-mini btn-danger' %>
+      </td>
+
+	</tr>
+	<% end %>
+</tbody>
+</table>
+
+<%= link_to "Upload a file", uploads_new_path, :class => 'btn btn-primary' %>
