@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
+  # get 'home/index'
 
-  get 'uploads/new'
+  # get 'uploads/new'
 
-  get 'uploads/create'
+  # get 'uploads/create'
 
-  get 'uploads/index'
+  # get 'uploads/index'
+devise_for :users, :controllers => { registrations: 'registrations' }
 
-  devise_for :users
   root :to => "home#index"
 
   get 'uploads/new'
